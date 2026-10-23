@@ -1,0 +1,654 @@
+/* =====================================================================
+   Skins. Classic is the default in globals.css.
+   [data-skin="retro"]  8-bit arcade cabinet: PICO-8 palette, pixel type, CRT glass
+   [data-skin="cine"]   Neon city blockbuster: dusk gradients, glass, grain, condensed type
+   ===================================================================== */
+
+/* ---------- Skin switcher (shared) ---------- */
+.skin-toggle,
+.skin-menu {
+  background: var(--paper);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: var(--sh);
+  font-family: var(--display-face);
+  font-size: 0.95rem;
+}
+.skin-menu {
+  border-radius: 18px;
+}
+.skin-opt {
+  border-radius: 12px;
+  transition: background 0.15s;
+}
+.skin-opt:hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.skin-opt.is-on {
+  background: var(--gold);
+  color: #160f2e;
+}
+.skin-opt-name {
+  font-size: 1.05rem;
+  line-height: 1.1;
+}
+.skin-opt-blurb {
+  font-family: var(--body-face);
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.65;
+}
+.skin-dots i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+}
+.skin-dots i:nth-child(1) {
+  background: #ffd23f;
+}
+.skin-dots i:nth-child(2) {
+  background: #ff004d;
+}
+.skin-dots i:nth-child(3) {
+  background: #ff3d9a;
+}
+.skin-fx {
+  display: none;
+}
+.skin-only-retro,
+.skin-only-cine {
+  display: none;
+}
+
+/* =====================================================================
+   RETRO / ARCADE
+   ===================================================================== */
+[data-skin="retro"] {
+  --ink: #000000;
+  --night: #0b0f2a;
+  --night-2: #1d2b53;
+  --night-3: #26336b;
+  --monad: #8f6bff;
+  --monad-deep: #7e2553;
+  --paper: #fff1e8;
+  --cream: #ffe3c4;
+  --gold: #ffec27;
+  --gold-deep: #ffa300;
+  --red: #ff004d;
+  --green: #00e436;
+  --sky: #29adff;
+  --orange: #ffa300;
+  --pink: #ff77a8;
+  --steel: #c2c3c7;
+
+  --display-face: var(--font-pixel);
+  --body-face: var(--font-pixel);
+  --mono-face: var(--font-crt);
+  --sh-sm: 3px 3px 0 0 #000;
+  --sh: 5px 5px 0 0 #000;
+  --sh-lg: 8px 8px 0 0 #000;
+  --sh-hover: 7px 7px 0 0 #000;
+}
+[data-skin="retro"] body {
+  background-color: var(--night);
+  background-image:
+    linear-gradient(rgba(41, 173, 255, 0.07) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(41, 173, 255, 0.07) 2px, transparent 2px),
+    radial-gradient(ellipse at 50% -20%, rgba(255, 0, 77, 0.28), transparent 60%);
+  background-size:
+    32px 32px,
+    32px 32px,
+    auto;
+  font-synthesis: none;
+}
+/* Everything is square in the arcade */
+[data-skin="retro"] *:not(.keep-round) {
+  border-radius: 0 !important;
+}
+[data-skin="retro"] .font-mono,
+[data-skin="retro"] .tape {
+  font-size-adjust: 0.5;
+  letter-spacing: 0.06em;
+}
+[data-skin="retro"] .font-semibold,
+[data-skin="retro"] .font-bold,
+[data-skin="retro"] .font-extrabold,
+[data-skin="retro"] .font-black {
+  font-weight: 500;
+}
+[data-skin="retro"] .font-display,
+[data-skin="retro"] .btn {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+[data-skin="retro"] .font-display.leading-\[0\.85\] {
+  line-height: 0.95;
+}
+[data-skin="retro"] img {
+  image-rendering: pixelated;
+}
+[data-skin="retro"] .text-outline {
+  -webkit-text-stroke: 0;
+  text-shadow:
+    4px 0 #000,
+    -4px 0 #000,
+    0 4px #000,
+    0 -4px #000,
+    4px 4px #000,
+    -4px 4px #000,
+    4px -4px #000,
+    -4px -4px #000,
+    8px 8px 0 #ff004d,
+    10px 10px 0 #000;
+}
+[data-skin="retro"] .text-outline-sm {
+  -webkit-text-stroke: 0;
+  text-shadow:
+    2px 0 #000,
+    -2px 0 #000,
+    0 2px #000,
+    0 -2px #000,
+    3px 3px 0 #000;
+}
+/* NES dialogue boxes */
+[data-skin="retro"] .card {
+  border: 4px solid #000;
+  outline: 3px solid var(--paper);
+  outline-offset: -9px;
+  box-shadow: var(--sh-lg);
+}
+[data-skin="retro"] .card .card,
+[data-skin="retro"] .card[style] {
+  outline: none;
+}
+[data-skin="retro"] .panel {
+  background: #000;
+  border: 4px solid #fff1e8;
+  box-shadow:
+    0 0 0 4px #000,
+    10px 10px 0 4px rgba(0, 0, 0, 0.6);
+}
+[data-skin="retro"] .btn {
+  border-width: 4px;
+  padding: 0.6rem 1.25rem;
+  transition: none;
+}
+[data-skin="retro"] .btn:hover {
+  transform: translate(-2px, -2px);
+}
+[data-skin="retro"] .btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+[data-skin="retro"] .btn-gold {
+  background: var(--gold);
+  box-shadow:
+    inset -4px -4px 0 #ffa300,
+    inset 4px 4px 0 #fff8b0,
+    var(--sh);
+}
+[data-skin="retro"] .btn-purple {
+  background: var(--monad);
+  box-shadow:
+    inset -4px -4px 0 #5a3fd0,
+    inset 4px 4px 0 #c5b5ff,
+    var(--sh);
+}
+[data-skin="retro"] .btn-red {
+  background: var(--red);
+  box-shadow:
+    inset -4px -4px 0 #a8002f,
+    inset 4px 4px 0 #ff7aa0,
+    var(--sh);
+}
+[data-skin="retro"] .chip {
+  border-width: 3px;
+}
+[data-skin="retro"] .tape {
+  clip-path: none;
+  background: var(--red);
+  color: #fff1e8;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0 #000;
+}
+[data-skin="retro"] .caution {
+  background: repeating-linear-gradient(90deg, var(--gold) 0 16px, #000 16px 32px);
+}
+[data-skin="retro"] .lined {
+  background-image: repeating-linear-gradient(transparent 0 26px, rgba(41, 173, 255, 0.45) 26px 28px);
+}
+[data-skin="retro"] ::selection {
+  background: var(--red);
+  color: #fff;
+}
+/* CRT glass: scanlines, RGB mask and a soft vignette */
+[data-skin="retro"] .skin-fx {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 0, 0, 0.03) 0 1px, rgba(0, 255, 0, 0.025) 1px 2px, rgba(0, 0, 255, 0.03) 2px 3px),
+    radial-gradient(ellipse at center, transparent 62%, rgba(0, 0, 0, 0.55) 100%);
+  animation: crt-flicker 6s steps(1) infinite;
+}
+@keyframes crt-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+[data-skin="retro"] .skin-only-retro {
+  display: block;
+}
+[data-skin="retro"] .skin-toggle,
+[data-skin="retro"] .skin-menu {
+  border-width: 4px;
+  text-transform: uppercase;
+}
+
+/* Pixel blink used by the arcade landing */
+@keyframes px-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.px-blink {
+  animation: px-blink 1s steps(1) infinite;
+}
+@keyframes px-scroll {
+  to {
+    background-position: 0 64px;
+  }
+}
+
+/* =====================================================================
+   CINEMATIC
+   ===================================================================== */
+[data-skin="cine"] {
+  --ink: #07060f;
+  --night: #07061a;
+  --night-2: #0e0b26;
+  --night-3: #1a1440;
+  --monad: #9a7bff;
+  --monad-deep: #7c5cff;
+  --paper: #f6f1ff;
+  --cream: #ffe8d6;
+  --gold: #ffc85a;
+  --gold-deep: #ff9b3d;
+  --red: #ff3b6b;
+  --green: #2ff5a8;
+  --sky: #3fd9ff;
+  --orange: #ff8a3d;
+  --pink: #ff4fd8;
+  --steel: #a9a3d6;
+
+  --display-face: var(--font-archivo);
+  --body-face: var(--font-manrope);
+  --mono-face: var(--font-jet);
+  --sh-sm: 0 4px 14px -4px rgba(0, 0, 0, 0.6);
+  --sh: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --sh-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --sh-hover: 0 14px 40px -10px rgba(255, 79, 216, 0.45);
+  --glass: rgba(14, 11, 34, 0.62);
+  --glass-line: rgba(255, 255, 255, 0.1);
+}
+[data-skin="cine"] html,
+html[data-skin="cine"] {
+  background: #07061a;
+}
+[data-skin="cine"] body {
+  background-color: #07061a;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 115%, rgba(255, 92, 120, 0.42), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 10% 100%, rgba(255, 150, 60, 0.25), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 90% -10%, rgba(124, 92, 255, 0.4), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 0% 0%, rgba(63, 217, 255, 0.14), transparent 70%),
+    linear-gradient(180deg, #07061a 0%, #120a2e 55%, #2a0d38 100%);
+  background-size: auto;
+  background-attachment: fixed;
+  letter-spacing: -0.005em;
+}
+[data-skin="cine"] .font-display,
+[data-skin="cine"] .btn,
+[data-skin="cine"] .stamp {
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  word-spacing: 0.12em;
+  font-weight: 800;
+  font-stretch: 100%;
+}
+/* Hero titles: extra wide and black */
+[data-skin="cine"] .title-xl {
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -0.02em;
+}
+[data-skin="cine"] .font-display.leading-\[0\.85\] {
+  line-height: 0.88;
+}
+[data-skin="cine"] .font-mono {
+  letter-spacing: 0.02em;
+}
+[data-skin="cine"] .text-outline,
+[data-skin="cine"] .text-outline-sm {
+  -webkit-text-stroke: 0;
+  text-shadow:
+    0 2px 30px rgba(255, 79, 216, 0.35),
+    0 1px 0 rgba(0, 0, 0, 0.4);
+}
+[data-skin="cine"] .text-outline .text-gold,
+[data-skin="cine"] .text-outline.text-gold {
+  background: linear-gradient(180deg, #fff1b8 0%, #ffc85a 40%, #ff6b8b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 4px 24px rgba(255, 107, 139, 0.45));
+}
+
+/* Ink borders become hairlines of light */
+[data-skin="cine"] .border-ink,
+[data-skin="cine"] .border-ink\/40,
+[data-skin="cine"] .border-ink\/60,
+[data-skin="cine"] .border-ink\/30 {
+  border-color: var(--glass-line);
+}
+[data-skin="cine"] .border-\[3px\],
+[data-skin="cine"] .border-\[2\.5px\],
+[data-skin="cine"] .border-2,
+[data-skin="cine"] .border-b-\[3px\],
+[data-skin="cine"] .border-t-\[3px\],
+[data-skin="cine"] .border-y-\[3px\],
+[data-skin="cine"] .border-r-\[3px\],
+[data-skin="cine"] .border-r-\[2\.5px\],
+[data-skin="cine"] .border-t-2,
+[data-skin="cine"] .border-b-2 {
+  border-width: 1px;
+}
+[data-skin="cine"] .border-b-\[3px\],
+[data-skin="cine"] .border-b-2 {
+  border-width: 0 0 1px 0;
+}
+[data-skin="cine"] .border-t-\[3px\],
+[data-skin="cine"] .border-t-2 {
+  border-width: 1px 0 0 0;
+}
+[data-skin="cine"] .border-y-\[3px\] {
+  border-width: 1px 0;
+}
+[data-skin="cine"] .border-r-\[3px\],
+[data-skin="cine"] .border-r-\[2\.5px\] {
+  border-width: 0 1px 0 0;
+}
+
+/* Paper surfaces turn into dark glass: ink and paper swap inside them */
+[data-skin="cine"] .card,
+[data-skin="cine"] .bg-paper {
+  --ink: #f6f1ff;
+  --paper: var(--glass);
+  --cream: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
+}
+[data-skin="cine"] .card {
+  background: linear-gradient(160deg, rgba(40, 30, 90, 0.55), rgba(10, 8, 28, 0.78));
+  border: 1px solid var(--glass-line);
+  border-radius: 20px;
+  box-shadow:
+    var(--sh-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+[data-skin="cine"] .bg-paper {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+[data-skin="cine"] .card .bg-white,
+[data-skin="cine"] .bg-paper .bg-white {
+  background: rgba(255, 255, 255, 0.07);
+}
+/* Solid colour fills keep dark text */
+[data-skin="cine"] :is(.bg-gold, .bg-green, .bg-red, .bg-sky, .bg-orange, .bg-pink, .btn-gold, .btn-red, [style*="background: rgb"], [style*="background:#"], [style*="background: #"], [style*="background: linear"], [style*="background: radial"]) {
+  --ink: #0b0818;
+}
+[data-skin="cine"] .card .bg-ink,
+[data-skin="cine"] .bg-ink {
+  --ink: #05040c;
+  --paper: #f6f1ff;
+  background-color: rgba(5, 4, 12, 0.85);
+}
+[data-skin="cine"] .bg-ink\/75,
+[data-skin="cine"] .bg-ink\/70 {
+  background-color: rgba(3, 2, 10, 0.72);
+}
+[data-skin="cine"] .text-\[\#1f9e5a\],
+[data-skin="cine"] .\!text-\[\#1f9e5a\] {
+  color: var(--green) !important;
+}
+[data-skin="cine"] .text-\[\#c92536\],
+[data-skin="cine"] .\!text-\[\#c92536\] {
+  color: var(--red) !important;
+}
+
+[data-skin="cine"] .panel {
+  background: linear-gradient(170deg, rgba(60, 40, 140, 0.32), rgba(10, 8, 30, 0.7));
+  border: 1px solid var(--glass-line);
+  border-radius: 20px;
+  box-shadow:
+    var(--sh-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+[data-skin="cine"] .bg-night\/90,
+[data-skin="cine"] .bg-night\/70 {
+  background-color: rgba(7, 6, 22, 0.55);
+}
+
+[data-skin="cine"] .btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 9, 30, 0.45);
+  color: var(--paper);
+  backdrop-filter: blur(10px);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  padding: 0.65rem 1.4rem;
+}
+[data-skin="cine"] .card .btn:not(.btn-gold):not(.btn-red):not(.btn-purple) {
+  color: var(--ink);
+}
+[data-skin="cine"] .btn:hover {
+  transform: translateY(-2px);
+}
+[data-skin="cine"] .btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+[data-skin="cine"] .btn-gold {
+  border-color: transparent;
+  color: #1a0b1f;
+  background: linear-gradient(100deg, #ffe08a 0%, #ffb14a 45%, #ff5e8a 100%);
+  box-shadow:
+    0 10px 30px -8px rgba(255, 110, 120, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+[data-skin="cine"] .btn-purple {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(100deg, #7c5cff, #c04dff 60%, #ff4fd8);
+  box-shadow:
+    0 10px 30px -8px rgba(160, 80, 255, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+[data-skin="cine"] .btn-red {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(100deg, #ff3b6b, #ff4fd8);
+  box-shadow: 0 10px 30px -8px rgba(255, 59, 107, 0.7);
+}
+[data-skin="cine"] .btn-big {
+  font-size: 1.3rem;
+  padding: 0.95rem 2.2rem;
+}
+[data-skin="cine"] .chip {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-family: var(--mono-face);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+[data-skin="cine"] .tape {
+  clip-path: none;
+  background: transparent;
+  color: var(--gold);
+  padding: 0 0 0 2.2rem;
+  position: relative;
+  box-shadow: none;
+  letter-spacing: 0.32em;
+  font-weight: 600;
+}
+[data-skin="cine"] .tape::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+[data-skin="cine"] .stamp {
+  mix-blend-mode: normal;
+  border-width: 2px;
+  letter-spacing: 0.2em;
+}
+[data-skin="cine"] .caution {
+  height: 2px !important;
+  border: 0;
+  background: linear-gradient(90deg, transparent, #ff4fd8 20%, #ffc85a 50%, #3fd9ff 80%, transparent);
+  box-shadow: 0 0 18px rgba(255, 79, 216, 0.7);
+}
+[data-skin="cine"] .lined {
+  background-color: rgba(10, 8, 28, 0.6);
+  background-image: repeating-linear-gradient(transparent 0 27px, rgba(63, 217, 255, 0.12) 27px 28px);
+}
+[data-skin="cine"] input {
+  color: var(--ink);
+}
+[data-skin="cine"] ::selection {
+  background: #ff4fd8;
+  color: #fff;
+}
+[data-skin="cine"] .thin-scroll {
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+[data-skin="cine"] .nav-pill {
+  background: linear-gradient(100deg, #ffe08a, #ffb14a 45%, #ff5e8a);
+  border: 0;
+  box-shadow: 0 6px 24px -6px rgba(255, 110, 140, 0.7);
+}
+[data-skin="cine"] .nav-on {
+  color: #1a0b1f;
+}
+
+/* Film grain + vignette */
+[data-skin="cine"] .skin-fx {
+  display: block;
+  position: fixed;
+  inset: -50%;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 0.6s steps(4) infinite;
+}
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-3%, 2%);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+  75% {
+    transform: translate(-2%, -1%);
+  }
+}
+[data-skin="cine"] .skin-only-cine {
+  display: block;
+}
+[data-skin="cine"] .skin-toggle,
+[data-skin="cine"] .skin-menu {
+  background: rgba(14, 11, 34, 0.7);
+  color: #f6f1ff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+[data-skin="cine"] .skin-opt-blurb {
+  text-transform: none;
+  letter-spacing: 0;
+}
+[data-skin="cine"] .skin-opt.is-on {
+  background: linear-gradient(100deg, #ffe08a, #ff5e8a);
+  color: #1a0b1f;
+}
+
+/* Cine landing helpers */
+@keyframes cine-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+.cine-sweep {
+  background-image: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cine-sweep 5s ease-in-out infinite;
+}
+@keyframes cine-sweep {
+  0% {
+    background-position: 150% 0;
+  }
+  60%,
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-fx,
+  .px-blink,
+  .cine-sweep {
+    animation: none !important;
+  }
+}

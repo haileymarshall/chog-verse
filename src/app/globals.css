@@ -1,0 +1,335 @@
+@import "tailwindcss";
+
+/* Chog Verse tokens: Monad City at night after The Great Rug.
+   Thick ink outlines + hard offset shadows match the Chog sticker art. */
+:root {
+  --ink: #160f2e;
+  --night: #1a1038;
+  --night-2: #261858;
+  --night-3: #352277;
+  --monad: #836ef9;
+  --monad-deep: #5b45d6;
+  --paper: #fff6e5;
+  --cream: #ffe9c2;
+  --gold: #ffd23f;
+  --gold-deep: #f2a900;
+  --red: #ff4d5e;
+  --green: #3ddc84;
+  --sky: #4cc9f0;
+  --orange: #ff9f1c;
+  --pink: #ff7eb6;
+  --steel: #b8b3d6;
+
+  /* Skin hooks: fonts and shadows are swapped per skin */
+  --display-face: var(--font-lilita);
+  --body-face: var(--font-nunito);
+  --mono-face: var(--font-mono-face);
+  --sh-sm: 2px 2px 0 0 var(--ink);
+  --sh: 4px 4px 0 0 var(--ink);
+  --sh-lg: 7px 7px 0 0 var(--ink);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-night-3: var(--night-3);
+  --color-monad: var(--monad);
+  --color-monad-deep: var(--monad-deep);
+  --color-paper: var(--paper);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-red: var(--red);
+  --color-green: var(--green);
+  --color-sky: var(--sky);
+  --color-orange: var(--orange);
+  --color-pink: var(--pink);
+  --color-steel: var(--steel);
+
+  --font-display: var(--display-face);
+  --font-sans: var(--body-face);
+  --font-mono: var(--mono-face);
+
+  --shadow-sticker: var(--sh);
+  --shadow-sticker-sm: var(--sh-sm);
+  --shadow-sticker-lg: var(--sh-lg);
+}
+
+html {
+  background: var(--night);
+}
+
+body {
+  background-color: var(--night);
+  background-image:
+    radial-gradient(ellipse at 15% -10%, rgba(131, 110, 249, 0.55) 0, transparent 50%),
+    radial-gradient(ellipse at 95% 10%, rgba(255, 126, 182, 0.25) 0, transparent 40%),
+    radial-gradient(rgba(255, 255, 255, 0.07) 1.2px, transparent 1.2px);
+  background-size: auto, auto, 26px 26px;
+  background-attachment: fixed;
+  color: var(--paper);
+  font-family: var(--body-face), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ---------- Primitives ---------- */
+
+.text-outline {
+  -webkit-text-stroke: 7px var(--ink);
+  paint-order: stroke fill;
+}
+.text-outline-sm {
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
+}
+
+/* Paper card with ink border and hard shadow */
+.card {
+  background: var(--paper);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sticker-lg);
+}
+/* Dark glass panel for the night scenes */
+.panel {
+  background: linear-gradient(180deg, rgba(53, 34, 119, 0.92), rgba(38, 24, 88, 0.92));
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sticker-lg), inset 0 2px 0 rgba(255, 255, 255, 0.12);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.55rem 1.25rem;
+  font-family: var(--display-face);
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-sticker);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.btn:hover {
+  transform: translate(-1px, -2px);
+  box-shadow: var(--sh-hover, 5px 6px 0 0 var(--ink));
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sticker-sm);
+}
+.btn:disabled {
+  filter: grayscale(0.7) brightness(0.85);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-sticker-sm);
+}
+.btn-gold {
+  background: linear-gradient(180deg, #ffe066, var(--gold) 55%, var(--gold-deep));
+}
+.btn-purple {
+  background: linear-gradient(180deg, #a08fff, var(--monad));
+  color: white;
+}
+.btn-red {
+  background: linear-gradient(180deg, #ff7a86, var(--red));
+  color: white;
+}
+.btn-big {
+  font-size: 1.5rem;
+  padding: 0.8rem 2rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-weight: 800;
+  font-size: 0.75rem;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-sticker-sm);
+}
+
+/* Masking tape label */
+.tape {
+  display: inline-block;
+  background: rgba(255, 233, 194, 0.92);
+  color: var(--ink);
+  padding: 0.2rem 1rem;
+  font-family: var(--mono-face);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  clip-path: polygon(2% 0, 98% 4%, 100% 50%, 97% 100%, 3% 96%, 0 50%);
+}
+
+/* Rubber stamp */
+.stamp {
+  display: inline-block;
+  border: 4px solid currentColor;
+  border-radius: 8px;
+  padding: 0.1rem 0.7rem;
+  font-family: var(--display-face);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(circle at 30% 40%, black 60%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Police caution tape */
+.caution {
+  background: repeating-linear-gradient(-45deg, var(--gold) 0 22px, var(--ink) 22px 44px);
+  border-block: 3px solid var(--ink);
+}
+
+/* Lined paper for case files */
+.lined {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(transparent 0 27px, rgba(76, 201, 240, 0.35) 27px 28px);
+}
+
+.font-mono {
+  font-family: var(--mono-face), ui-monospace, monospace;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--monad) transparent;
+}
+
+/* ---------- Ambient animation ---------- */
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.twinkle {
+  animation: twinkle 2.2s ease-in-out infinite;
+}
+
+@keyframes searchlight {
+  0%,
+  100% {
+    transform: rotate(-28deg);
+  }
+  50% {
+    transform: rotate(22deg);
+  }
+}
+.searchlight {
+  transform-origin: 50% 100%;
+  animation: searchlight 9s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin-slow 40s linear infinite;
+}
+
+@keyframes dial {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(140deg);
+  }
+  45% {
+    transform: rotate(60deg);
+  }
+  70% {
+    transform: rotate(250deg);
+  }
+}
+.dial {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dial 8s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.2;
+  }
+}
+.neon-flicker {
+  animation: blink 4s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes window-glow {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.window-glow {
+  animation: window-glow 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twinkle,
+  .searchlight,
+  .spin-slow,
+  .dial,
+  .neon-flicker,
+  .marquee,
+  .window-glow {
+    animation: none;
+  }
+}
