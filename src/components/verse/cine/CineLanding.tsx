@@ -56,10 +56,10 @@ export function CineLanding() {
         <motion.div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-black" initial={{ height: "50vh" }} animate={{ height: "5vh" }} transition={{ duration: 1.8, ease: [0.7, 0, 0.2, 1], delay: 0.2 }} />
 
         <nav className="absolute inset-x-0 top-[5vh] z-30 mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <div className="flex items-center gap-3">
+          <Link href="/" title="Back to the hub" className="flex items-center gap-3">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[#ffe08a] via-[#ffb14a] to-[#ff5e8a] font-display text-lg text-[#1a0b1f] shadow-[0_0_24px_rgba(255,110,140,0.6)]">C</span>
             <span className="whitespace-nowrap font-display text-lg tracking-[0.12em] sm:text-xl">CHOG VERSE</span>
-          </div>
+          </Link>
           <div className="hidden items-center gap-8 font-mono text-[11px] uppercase tracking-[0.3em] text-paper/70 md:flex">
             <a href="#story" className="transition hover:text-paper">How it works</a>
             <a href="#crew" className="transition hover:text-paper">Crew</a>

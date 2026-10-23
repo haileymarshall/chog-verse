@@ -34,7 +34,7 @@ const jet = JetBrains_Mono({ variable: "--font-jet", subsets: ["latin"], preload
 
 export const metadata: Metadata = {
   title: "Chog Verse",
-  description: "The Bank holds the $CHOG. Team up with 3 other Chogs and get it out.",
+  description: "Where the Chogs come alive: a crew trading game for the $CHOG vault, a Hangout, and Chog ID cards. On Monad.",
 };
 
 export const viewport: Viewport = {

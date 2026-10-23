@@ -56,7 +56,7 @@ export function GameShell({ children }: { children: ReactNode }) {
 
       <header className="sticky top-0 z-40 border-b-[3px] border-ink bg-night/90 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5">
-          <Link href="/" className="group flex shrink-0 items-center gap-2" onClick={() => sfx.pop()}>
+          <Link href="/play" className="group flex shrink-0 items-center gap-2" onClick={() => sfx.pop()}>
             <span className="grid h-10 w-10 place-items-center rounded-xl border-[3px] border-ink bg-gold text-ink shadow-sticker-sm transition group-hover:-rotate-6">
               <Icon name="vault" className="h-6 w-6" />
             </span>

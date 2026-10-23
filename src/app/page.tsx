@@ -1,5 +1,5 @@
-import { SkinLanding } from "@/components/verse/SkinLanding";
+import { Hub } from "@/components/verse/Hub";
 
 export default function Home() {
-  return <SkinLanding />;
+  return <Hub />;
 }
