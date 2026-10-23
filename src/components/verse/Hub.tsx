@@ -63,7 +63,7 @@ export function Hub() {
       href: "/id",
       kicker: "Your Chog's card",
       title: "Chog ID",
-      body: "Pick any of the 1,969 Chogs and get a card with its tier and traits. Download it, post it.",
+      body: "Any of the 1,969 Chogs gets a card: tier, rarity rank, traits and game stats. Download it, post it.",
       cta: "Make my card",
       color: "#3fd9ff",
       glow: "rgba(63,217,255,0.4)",

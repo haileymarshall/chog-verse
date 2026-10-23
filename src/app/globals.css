@@ -342,3 +342,11 @@ body {
   backdrop-filter: blur(14px);
   box-shadow: 0 30px 80px rgb(0 0 0 / 0.4);
 }
+
+/* Gold light that runs across Legendary Chog ID cards */
+.foil-sweep {
+  background-image: linear-gradient(100deg, transparent 35%, rgb(255 230 150 / 0.28) 50%, transparent 65%);
+  background-size: 250% 100%;
+  mix-blend-mode: screen;
+  animation: cine-sweep 4s ease-in-out infinite;
+}

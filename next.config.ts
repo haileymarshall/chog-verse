@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   serverExternalPackages: ["@electric-sql/pglite"],
+  outputFileTracingIncludes: { "/api/card/[id]": ["./src/assets/fonts/**", "./data/chogs.json"] },
   partialPrefetching: true,
   turbopack: {
     rules: {
