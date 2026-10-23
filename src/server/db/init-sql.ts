@@ -101,4 +101,25 @@ CREATE TABLE IF NOT EXISTS meta (
   value jsonb NOT NULL,
   updated_at timestamptz NOT NULL DEFAULT now()
 );
+
+CREATE TABLE IF NOT EXISTS groups (
+  id serial PRIMARY KEY,
+  name text NOT NULL,
+  created_by integer NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS group_members (
+  group_id integer NOT NULL,
+  chog_id integer NOT NULL,
+  joined_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (group_id, chog_id)
+);
+CREATE INDEX IF NOT EXISTS group_members_chog ON group_members (chog_id);
+
+CREATE TABLE IF NOT EXISTS presence (
+  player_id integer PRIMARY KEY,
+  room text NOT NULL,
+  seen_at timestamptz NOT NULL DEFAULT now()
+);
 `;

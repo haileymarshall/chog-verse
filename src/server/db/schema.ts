@@ -127,3 +127,28 @@ export const meta = pgTable("meta", {
   value: jsonb("value").notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });
+
+/** Hangout group chats. Members are Chogs, so whoever plays that Chog sees the group */
+export const groups = pgTable("groups", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  createdBy: integer("created_by").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const groupMembers = pgTable(
+  "group_members",
+  {
+    groupId: integer("group_id").notNull(),
+    chogId: integer("chog_id").notNull(),
+    joinedAt: timestamp("joined_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.groupId, t.chogId] }), index("group_members_chog").on(t.chogId)],
+);
+
+/** Last time each player had the Hangout open, and in which room */
+export const presence = pgTable("presence", {
+  playerId: integer("player_id").primaryKey(),
+  room: text("room").notNull(),
+  seenAt: timestamp("seen_at", { withTimezone: true }).defaultNow().notNull(),
+});

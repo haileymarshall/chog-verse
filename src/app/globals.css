@@ -333,3 +333,12 @@ body {
     animation: none;
   }
 }
+
+/* Hub sections (Hangout, Chog ID): dark glass panels */
+.glass {
+  border-radius: 24px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(14 11 38 / 0.72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.4);
+}

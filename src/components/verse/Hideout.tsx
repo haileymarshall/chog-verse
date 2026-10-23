@@ -62,7 +62,7 @@ export function Hideout() {
 
 /* ---------- Step 1: sign in ---------- */
 
-function SignIn() {
+export function SignIn() {
   const toast = useToast();
   const call = useCall();
   const connectors = useConnectors();
@@ -143,7 +143,7 @@ const PAGE = 24;
 
 type MyChogs = { wallet: string; any: boolean; chogs: number[]; taken: number[] };
 
-function PickChog({ kind }: { kind: "holder" | "guest" }) {
+export function PickChog({ kind }: { kind: "holder" | "guest" }) {
   const toast = useToast();
   const call = useCall();
   const [busy, setBusy] = useState<number | null>(null);

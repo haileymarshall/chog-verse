@@ -56,7 +56,7 @@ export function Hub() {
       color: "#ff4fd8",
       glow: "rgba(255,79,216,0.4)",
       chogs: [1481, 1667, 942, 1514],
-      stat: { label: "Crews in the city", value: g ? num(g.crewCount) : "–" },
+      stat: { label: "Public rooms", value: "4 + your groups" },
     },
     {
       n: "03",
