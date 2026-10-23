@@ -9,7 +9,33 @@ Built for [Chogathon 2026](https://chogathon.chog.xyz/).
 | Demo (play solo, guest pass, bots fill your crew, 30-min game days) | https://chog-verse-demo.vercel.app |
 | Testnet (the real game, wallet login, entry paid on Monad testnet) | https://chog-verse.vercel.app |
 
-## How it works
+![Chog Verse](public/banner.png)
+
+## Three doors
+
+The hub at `/` opens onto three parts of the city:
+
+- **Play** (`/play`): the crew game for the $CHOG vault (below).
+- **Hangout** (`/hangout`): public rooms, group chats and DMs, with your Chog as the speaker, plus who's online.
+- **Chog ID** (`/id/<n>`): a foil card for any of the 1,969 Chogs with tier, trait rarity, rarity rank and game stats. Download it as a PNG, post it on X or share the link (the link previews the card).
+
+## Try it
+
+**No wallet needed:** open the [demo](https://chog-verse-demo.vercel.app).
+
+1. Click **Play**, then grab a **Guest pass** and pick any Chog.
+2. Start a crew. Bots fill the other 3 seats.
+3. Days are 30 minutes: pick, watch it lock, and see your score on the Leaderboard.
+4. Then open **Hangout** and **Chog ID**.
+
+**Real game:** open the [testnet site](https://chog-verse.vercel.app).
+
+1. Connect a wallet and sign in.
+2. Get MON from https://faucet.monad.xyz.
+3. Claim test $CHOG in the app and pay the 100 test $CHOG entry.
+4. A crew needs 4 real players.
+
+## How the game works
 
 - **Crews of 4 Chogs** race through a 7-day season. Each Chog takes one role:
   - **Whale**: splits the crew's $10k between the picks and cash.
@@ -27,6 +53,7 @@ Built for [Chogathon 2026](https://chogathon.chog.xyz/).
 - Postgres via Drizzle (Neon in production, embedded PGlite locally)
 - wagmi + viem on Monad: wallet-signature login, Chog ownership on mainnet, entry and payout on testnet
 - Foundry contracts: `contracts/` (ChogBank, TestChog)
+- `next/og` for the Chog ID card images
 - Vercel (two deploys of one codebase: `NEXT_PUBLIC_MODE=demo|live`) + Vercel Cron for the game engine
 
 ## Run locally
